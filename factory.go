@@ -4,4 +4,4 @@ import (
 	"github.com/paulhenri-l/gofile/contracts"
 )
 
-type managerFactory func(fileName string) (contracts.FileManager, error)
+type ManagerFactory func(fileName string) (contracts.FileManager, error)

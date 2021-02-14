@@ -21,7 +21,7 @@ type RotatingManager struct {
 	mtx                *sync.Mutex
 	path               string
 	prefix             string
-	factory            managerFactory
+	factory            ManagerFactory
 	rotateTime         time.Duration
 	rotateTicker       *time.Ticker
 	rotateSize         uint64
@@ -53,7 +53,7 @@ func NewRotatingManagerWithFactory(
 	prefix string,
 	rotateTime time.Duration,
 	rotateSize uint64,
-	f managerFactory,
+	f ManagerFactory,
 ) (*RotatingManager, error) {
 	m, err := newDecoratedManager(path, prefix, f)
 	if err != nil {
@@ -167,7 +167,7 @@ func (rm *RotatingManager) notifyRotationHandler() {
 	}
 }
 
-func newDecoratedManager(path, prefix string, f managerFactory) (*decoratedManager, error) {
+func newDecoratedManager(path, prefix string, f ManagerFactory) (*decoratedManager, error) {
 	fn := newRandFileName(path, prefix)
 
 	m, err := f(fn)

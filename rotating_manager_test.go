@@ -267,7 +267,7 @@ func BenchmarkRotatingManager_Write(b *testing.B) {
 	rm.Close()
 }
 
-func newTestManagerFactory(t *testing.T) (managerFactory, *gomock.Controller, *m.MockFileManager) {
+func newTestManagerFactory(t *testing.T) (ManagerFactory, *gomock.Controller, *m.MockFileManager) {
 	ctl := gomock.NewController(t)
 	m := m.NewMockFileManager(ctl)
 	t.Cleanup(func() {
@@ -281,7 +281,7 @@ func newTestManagerFactory(t *testing.T) (managerFactory, *gomock.Controller, *m
 	return f, ctl, m
 }
 
-func newBrokenManagerFactory() managerFactory {
+func newBrokenManagerFactory() ManagerFactory {
 	return func(fileName string) (contracts.FileManager, error) {
 		return nil, errors.New("I am broken")
 	}
