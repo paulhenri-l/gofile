@@ -187,7 +187,7 @@ func newFakeManagers(t testing.TB, size int) ([]contracts.FileManager, string) {
 	path := t.TempDir()
 
 	for i := 0; i < size; i++ {
-		m, err := NewManager(newRandFileName(path, "test_"))
+		m, err := NewManager(NewRandFileName(path, "test_"))
 		if err != nil {
 			t.Error(err)
 		}

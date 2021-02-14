@@ -8,7 +8,7 @@ import (
 
 func TestNamePrefix(t *testing.T) {
 	tmp := t.TempDir()
-	fn := newRandFileName(tmp, "my_prefix")
+	fn := NewRandFileName(tmp, "my_prefix")
 
 	assert.Contains(t, fn, "my_prefix")
 }

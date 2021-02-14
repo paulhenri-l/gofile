@@ -168,7 +168,7 @@ func (rm *RotatingManager) notifyRotationHandler() {
 }
 
 func newDecoratedManager(path, prefix string, f ManagerFactory) (*decoratedManager, error) {
-	fn := newRandFileName(path, prefix)
+	fn := NewRandFileName(path, prefix)
 
 	m, err := f(fn)
 	if err != nil {

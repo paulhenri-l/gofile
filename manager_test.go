@@ -122,5 +122,5 @@ func BenchmarkAppend(b *testing.B) {
 }
 
 func newFileName(t testing.TB) string {
-	return newRandFileName(t.TempDir(), "")
+	return NewRandFileName(t.TempDir(), "")
 }
