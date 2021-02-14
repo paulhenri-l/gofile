@@ -7,7 +7,7 @@ import (
 	"github.com/rs/xid"
 )
 
-func newRandFileName(dirPath, prefix string) string {
+func NewRandFileName(dirPath, prefix string) string {
 	guid := xid.New()
 
 	return fmt.Sprintf(
